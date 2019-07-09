@@ -3,7 +3,9 @@
         <b-form-input v-model="name" placeholder="Enter your name"></b-form-input>
         <b-list-group class="suggested-players">
             <b-list-group-item v-for="player in players">
-                <a href="#">{{player.surname}} {{player.name}} {{player.patronymic}} ({{player.id}})</a>
+                <a href="#" @click="onClickPlayer(player)">
+                    {{player.surname}} {{player.name}} {{player.patronymic}} ({{player.id}})
+                </a>
             </b-list-group-item>
         </b-list-group>
     </div>
@@ -15,6 +17,10 @@
 
     export default {
         name: 'PlayerSearchBar',
+
+        props: {
+            onSelect: { type: Function, required: true, },
+        },
 
         created() {
             this.debouncedGetPlayers = _.debounce(this.getPlayers, 500);
@@ -31,12 +37,25 @@
             async getPlayers(surname, name, patronymic) {
                 this.players = await apiService.searchPlayers(surname, name, patronymic);
             },
+
+            onClickPlayer(player) {
+                this.clearSelection();
+                this.onSelect(player);
+            },
+
+            clearSelection() {
+                this.name = '';
+                this.players = [];
+            }
         },
 
         watch: {
             name(name) {
-                const tokens = name.split(' ');
-                this.debouncedGetPlayers(tokens[0], tokens[1] || '', tokens[2] || '');
+                name = name.trim();
+                if (name) {
+                    const tokens = name.split(' ');
+                    this.debouncedGetPlayers(tokens[0], tokens[1] || '', tokens[2] || '');
+                }
             },
         },
     }

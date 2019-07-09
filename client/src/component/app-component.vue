@@ -1,11 +1,13 @@
 <template>
     <div>
         <h1>Hi!</h1>
-        <player-search-bar></player-search-bar>
+        <player-search-bar :on-select="onSelectPlayer"></player-search-bar>
+        <h3>Selected players</h3>
         <b-list-group>
-            <b-list-group-item>1</b-list-group-item>
-            <b-list-group-item>2</b-list-group-item>
-            <b-list-group-item>3</b-list-group-item>
+            <b-list-group-item v-for="(player, index) in players">
+                {{player.surname}} {{player.name}} {{player.patronymic}}
+                <span @click="removePlayer(index)">X</span>
+            </b-list-group-item>
         </b-list-group>
     </div>
 </template>
@@ -22,7 +24,18 @@
 
         data() {
             return {
+                players: [],
             }
+        },
+
+        methods: {
+            onSelectPlayer(player) {
+                this.players.push(player);
+            },
+
+            removePlayer(index) {
+                this.players.splice(index, 1);
+            },
         },
     }
 </script>
