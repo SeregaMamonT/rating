@@ -56,6 +56,9 @@
                     const tokens = name.split(' ');
                     this.debouncedGetPlayers(tokens[0], tokens[1] || '', tokens[2] || '');
                 }
+                else {
+                    this.clearSelection()
+                }
             },
         },
     }

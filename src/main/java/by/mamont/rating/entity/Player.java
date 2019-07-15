@@ -1,7 +1,7 @@
 package by.mamont.rating.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Player
@@ -11,6 +11,8 @@ public class Player
   private String name;
   private String surname;
   private String patronymic;
+  @ManyToMany(mappedBy = "players")
+  private List<Squad> squads;
 
   public int getId()
   {
@@ -50,5 +52,15 @@ public class Player
   public void setPatronymic(String patronymic)
   {
     this.patronymic = patronymic;
+  }
+
+  public List<Squad> getSquads()
+  {
+    return squads;
+  }
+
+  public void setSquads(List<Squad> squads)
+  {
+    this.squads = squads;
   }
 }

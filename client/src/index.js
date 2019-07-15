@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import BootstrapVue, {BFormInput, BListGroup, BListGroupItem} from 'bootstrap-vue';
+import BootstrapVue, {BFormInput, BListGroup, BListGroupItem, BButton} from 'bootstrap-vue';
 
 Vue.use(BootstrapVue);
+Vue.component('b-button', BButton);
 Vue.component('b-form-input', BFormInput);
 Vue.component('b-list-group', BListGroup);
 Vue.component('b-list-group-item', BListGroupItem);

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerService
@@ -23,7 +24,13 @@ public class PlayerService
     return playerRepository.findAll();
   }
 
-  public List<Player> findByLettersContaining(String surname, String name, String patronymic) {
+  public Optional<Player> findById(int id)
+  {
+    return playerRepository.findById(id);
+  }
+
+  public List<Player> findByLettersContaining(String surname, String name, String patronymic)
+  {
     Pageable pageable = PageRequest.of(0, 10, Sort.by("surname", "name", "patronymic"));
     return playerRepository.findByLettersContaining(surname, name, patronymic, pageable).getContent();
   }
