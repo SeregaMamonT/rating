@@ -12,9 +12,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import AppComponent from './app-component';
 import router from './router';
+import store from './store';
 
 new Vue({
     el: "#app",
     render: h => h(AppComponent),
     router,
+    store,
 });

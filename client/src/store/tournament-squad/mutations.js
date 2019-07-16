@@ -1,0 +1,2 @@
+export const ADD_TO_SQUAD = 'ADD_TO_SQUAD';
+export const DELETE_FROM_SQUAD = 'DELETE_FROM_SQUAD';
