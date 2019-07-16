@@ -10,24 +10,26 @@ import java.util.List;
 @RestController
 public class PlayerController
 {
+  private static final String CROSS_ORIGIN_HOST = "http://localhost:1234";
+
   @Autowired
   private PlayerService playerService;
 
-  @CrossOrigin(origins = "http://localhost:1234")
+  @CrossOrigin(origins = CROSS_ORIGIN_HOST)
   @RequestMapping("api/player/all")
   public List<Player> getAllPlayers()
   {
     return playerService.list();
   }
 
-  @CrossOrigin(origins = "http://localhost:1234")
+  @CrossOrigin(origins = CROSS_ORIGIN_HOST)
   @RequestMapping("api/player/{playerId}")
   public Player getPlayer(@PathVariable(name = "playerId") String playerId)
   {
     return playerService.findById(Integer.parseInt(playerId)).orElse(null);
   }
 
-  @CrossOrigin(origins = "http://localhost:1234")
+  @CrossOrigin(origins = CROSS_ORIGIN_HOST)
   @RequestMapping("api/player/search")
   public List<Player> findPlayers(
     @RequestParam(value = "surname", required = false) String surname,
