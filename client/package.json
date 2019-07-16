@@ -16,7 +16,8 @@
     "bootstrap-vue": "^2.0.0-rc.25",
     "lodash": "^4.17.11",
     "vue": "^2.6.10",
-    "vue-hot-reload-api": "^2.3.3"
+    "vue-hot-reload-api": "^2.3.3",
+    "vue-router": "^3.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",

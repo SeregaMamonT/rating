@@ -1,24 +1,22 @@
 <template>
     <div>
-        <h1>Hi!</h1>
         <player-search-bar :on-select="onSelectPlayer"></player-search-bar>
         <h3>Selected players</h3>
         <b-list-group>
             <b-list-group-item v-for="(player, index) in players">
-                {{player.surname}} {{player.name}} {{player.patronymic}}
-                <a :href="playerUrl(player)" @click="removePlayer(index)">X</a>
+                <span :href="playerUrl(player)">{{player.surname}} {{player.name}} {{player.patronymic}}</span>
+                <a @click="removePlayer(index)">X</a>
             </b-list-group-item>
         </b-list-group>
         <b-button variant="outline-primary" @click="onSaveSquad">Save squad</b-button>
     </div>
 </template>
-
 <script>
-    import PlayerSearchBar from '../player-search-bar'
+    import PlayerSearchBar from '../component/player-search-bar'
     import apiService from "../service/apiService";
 
     export default {
-        name: 'AppComponent',
+        name: 'MainPage',
 
         components: {
             'player-search-bar': PlayerSearchBar,
@@ -49,6 +47,5 @@
         },
     }
 </script>
-
 <style>
 </style>

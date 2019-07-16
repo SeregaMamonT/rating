@@ -13,7 +13,7 @@
 
 <script>
     import _ from 'lodash';
-    import apiService from './service/apiService'
+    import apiService from '../service/apiService'
 
     export default {
         name: 'PlayerSearchBar',

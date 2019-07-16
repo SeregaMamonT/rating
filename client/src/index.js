@@ -10,9 +10,11 @@ Vue.component('b-list-group-item', BListGroupItem);
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-import AppComponent from './component/app-component';
+import AppComponent from './app-component';
+import router from './router';
 
 new Vue({
     el: "#app",
     render: h => h(AppComponent),
+    router,
 });
