@@ -1,19 +1,14 @@
+import axios from 'axios';
 import urls from '../urls';
 
 class ApiService {
     async searchPlayers(surname, name, patronymic) {
         const url = urls.player.search(surname, name, patronymic);
-        return (await fetch(url)).json();
+        return (await axios.get(url)).data;
     }
 
     async saveSquad(players) {
-        return await fetch(urls.squad.create, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(players),
-        });
+        return await axios.post(urls.squad.create, players);
     }
 }
 
