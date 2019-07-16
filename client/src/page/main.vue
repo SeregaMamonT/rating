@@ -14,6 +14,7 @@
 <script>
     import PlayerSearchBar from '../component/player-search-bar'
     import apiService from "../service/apiService";
+    import urls from '../urls';
 
     export default {
         name: 'MainPage',
@@ -42,7 +43,7 @@
             },
 
             playerUrl(player) {
-                return `http://localhost:8080/api/player/${player.id}`;
+                return urls.player.findById(player.id);
             },
         },
     }

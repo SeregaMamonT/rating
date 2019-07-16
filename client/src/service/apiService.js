@@ -1,14 +1,13 @@
-const ServerUrl = `http://localhost:8080`;
-const ApiUrl = `${ServerUrl}/api`;
+import urls from '../urls';
 
 class ApiService {
     async searchPlayers(surname, name, patronymic) {
-        const url = `${ApiUrl}/player/search?surname=${surname}&name=${name}&patronymic=${patronymic}`;
+        const url = urls.player.search(surname, name, patronymic);
         return (await fetch(url)).json();
     }
 
     async saveSquad(players) {
-        return await fetch(`${ApiUrl}/squad/create`, {
+        return await fetch(urls.squad.create, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
